@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    /* 🔥 BACKGROUND IMAGE (YOUR LOCAL FILE) */
+    background: linear-gradient(
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.7)
+    ),
+    url("/static/bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+}
+
+/* =======================
+   TITLE
+======================= */
+
+h1 {
+    text-align: center;
+    color: #00ff88;
+    margin-top: 20px;
+}
+
+/* =======================
+   GRID DASHBOARD CARDS
+======================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px;
+}
+
+/* CARD DESIGN */
+
+.card {
+    background: linear-gradient(145deg, #1a1a1a, #222);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,255,100,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,255,100,0.5);
+}
+
+/* =======================
+   BUY / SELL SIGNAL
+======================= */
+
+.signal {
+    margin: 20px auto;
+    padding: 15px 30px;
+    font-size: 22px;
+    display: inline-block;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.buy {
+    background: green;
+    color: white;
+}
+
+.sell {
+    background: red;
+    color: white;
+}
+
+/* =======================
+   TREND BOX
+======================= */
+
+.trend {
+    margin: 30px;
+    padding: 25px;
+    background: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+/* =======================
+   BACK BUTTON
+======================= */
+
+.back {
+    margin: 20px;
+    padding: 10px 20px;
+    background: dodgerblue;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back:hover {
+    background: #0059c1;
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

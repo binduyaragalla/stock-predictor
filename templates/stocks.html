@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Stock</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            color: white;
+            text-align: center;
+
+            /* ✅ Background Image Added */
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCj6qGlXdDmLgD4BSIqpPo74WxoBz9rbQbIw&s') no-repeat center center/cover;
+            height: 100vh;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        .box {
+            margin-top: 40px;
+        }
+
+        select {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: dodgerblue;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: blue;
+        }
+
+        .list {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        /* Optional: Dark overlay for readability */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📈 Select Top Global Stocks</h2>
+
+<form action="/dashboard" method="post" class="box">
+
+    <select name="stock">
+        <option value="AAPL">Apple (AAPL)</option>
+        <option value="GOOGL">Google (GOOGL)</option>
+        <option value="AMZN">Amazon (AMZN)</option>
+        <option value="MSFT">Microsoft (MSFT)</option>
+        <option value="TSLA">Tesla (TSLA)</option>
+        <option value="META">Meta (META)</option>
+        <option value="NVDA">NVIDIA (NVDA)</option>
+        <option value="NFLX">Netflix (NFLX)</option>
+        <option value="INTC">Intel (INTC)</option>
+        <option value="IBM">IBM</option>
+    </select>
+
+    <br>
+
+    <button type="submit">📊 Analyze Stock</button>
+
+</form>
+
+<div class="list">
+    <p>✔ Real-Time AI Prediction</p>
+    <p>✔ Trend Analysis</p>
+    <p>✔ Buy/Sell Signal</p>
+</div>
+
+</body>
+</html>

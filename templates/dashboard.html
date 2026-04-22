@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Stock Dashboard</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+     body{
+    height:100vh;
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    color:white;
+
+    background: linear-gradient(
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.9)
+    ),
+    url("https://media.istockphoto.com/id/1988186439/vector/business-financial-chart-with-moving-up-arrow-graph-stock-market-investment-data-and.jpg?s=612x612&w=0&k=20&c=PbkW9ZVXZoMb4HhmyrQn4CYgeWchuIECEnMl2MxF2_8=");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+        /* 📊 Cards */
+        .container{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            margin-top:20px;
+        }
+
+        .card{
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding:15px;
+            margin:10px;
+            border-radius:12px;
+            width:180px;
+            text-align:center;
+            box-shadow:0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .card h3{
+            font-size:14px;
+            color:#ddd;
+        }
+
+        .card p{
+            font-size:18px;
+            font-weight:bold;
+        }
+
+        /* 🎯 Buttons */
+        .buttons{
+            text-align:center;
+            margin-top:20px;
+        }
+
+        button{
+            padding:10px 15px;
+            margin:5px;
+            border:none;
+            border-radius:8px;
+            background:#00c6ff;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#0072ff;
+            transform:scale(1.1);
+        }
+
+        /* 📈 Chart Box */
+        .chart-container{
+            width:80%;
+            margin:30px auto;
+            background:white;
+            padding:20px;
+            border-radius:15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>{{stock}} AI STOCK ANALYSIS</h1>
+
+<!-- 📊 DATA CARDS -->
+<div class="container">
+
+    <div class="card">
+        <h3>Current Price</h3>
+        <p>{{current}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Yesterday</h3>
+        <p>{{yesterday}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Daily Change</h3>
+        <p>{{change}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Profit %</h3>
+        <p>{{profit}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Predicted</h3>
+        <p>{{predicted}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Signal</h3>
+        <p>{{signal}}</p>
+    </div>
+
+    <div class="card">
+        <h3>MA50</h3>
+        <p>{{ma50}}</p>
+    </div>
+
+    <div class="card">
+        <h3>MA200</h3>
+        <p>{{ma200}}</p>
+    </div>
+
+</div>
+
+<!-- 🎯 TIMEFRAME BUTTONS -->
+<div class="buttons">
+    <button onclick="loadChart(chart1d)">1 Day</button>
+    <button onclick="loadChart(chart1w)">1 Week</button>
+    <button onclick="loadChart(chart1m)">1 Month</button>
+    <button onclick="loadChart(chart1y)">1 Year</button>
+</div>
+
+<!-- 📈 CHART -->
+<div class="chart-container">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+
+    const chart1d = {{ chart_1d | tojson }};
+    const chart1w = {{ chart_1w | tojson }};
+    const chart1m = {{ chart_1m | tojson }};
+    const chart1y = {{ chart_1y | tojson }};
+
+    let chart;
+
+    function loadChart(data){
+
+        const labels = data.map((_, i) => i);
+
+        if(chart){
+            chart.destroy();
+        }
+
+        const ctx = document.getElementById("myChart").getContext("2d");
+
+        chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Stock Price",
+                    data: data,
+                    borderColor: "#00c6ff",
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    }
+
+    // Default load
+    loadChart(chart1y);
+
+</script>
+
+</body>
+</html>
